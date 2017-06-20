@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+h1 {
+    color: blue;
+    text-align: center;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ question.question_text }}</title>
+</head>
+<body bgcolor=#CCCCCC leftmargin="50" topmargin="50">
+
+<h1> <font face="Arial"> {{ question.question_text }} </font> </h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'polls:vote' question.id %}" method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} <img src="{{ choice.image }}" width="200" height="300"> </label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
+
+</body>
+</html>

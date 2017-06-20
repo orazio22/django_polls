@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+a {
+    color: green;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Question</title>
+</head>
+<body bgcolor=#CCCCCC leftmargin="50" topmargin="50">
+<h2>
+    <img src="https://lh3.googleusercontent.com/-7cII73EaBsk/WUg51Qq-y0I/AAAAAAAAMm0/d2bCNU40E_Evuw_o0zEYWxSaiRhAj7dvACK8BGAs/s386/l2.bmp" width="254" height="161" align="center" hspace="450">
+<font face="Arial">
+    {% if latest_question_list %}
+        <p>Spiegazione e balle varie<br>
+            (tante cose noiose bla bla bla)....</p>
+        <h3><a href="/polls/6/">Vote first question</a></h3>
+        <ol>
+        {% for question in latest_question_list %}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            <h4>({{ question.pub_date }})</h4>
+        {% endfor %}
+        </ol>
+    {% else %}
+        <p>No polls are available.</p>
+{% endif %}
+</font>
+</h2>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+a {
+    color: red;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Thanks for voting</title>
+</head>
+<body bgcolor=#CCCCCC leftmargin="50" topmargin="50">
+<h1> <font face="Arial"> {{ question.question_text }} </font> </h1>
+
+<h2> <font face="Arial"> Thanks for voting </font> </h2>
+
+<!--<ul>-->
+<!--{% for choice in question.choice_set.all %}-->
+    <!--<li>{{ choice.choice_text }} &#45;&#45; {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>-->
+<!--{% endfor %}-->
+<!--</ul>-->
+
+<font face="Arial">
+
+    <h4><a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    <a href="{% url 'polls:index' %}">Vote another question?</a></h4>
+    {% if question.question_text == "Qual e' il Morello più bello?" %}
+        <h3><a href="/polls/3/">Vote following question?</a></h3>
+    {% elif question.question_text == "Qual e' il tuo Morello più bello?" %}
+        <h3><a href="/polls/6/">Vote following question?</a></h3>
+    {% elif question.question_text == "Qual e' il tuo gatto preferito?" %}
+        <h3><a href="/polls/5/">Vote following question?</a></h3>
+    {%else%}
+        <h3>{{question.question_text}}</h3>
+    {% endif %}
+    <h2>{% url 'polls:detail' question.id%}</h2>
+
+</font>
+
+</body>
+</html>
