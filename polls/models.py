@@ -16,7 +16,7 @@ class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
     votes = models.IntegerField(default=0)
-    image = models.ImageField(default=None)
+    image = models.ImageField(default=None, max_length=1000)
     def __str__(self):
         return self.choice_text
 
