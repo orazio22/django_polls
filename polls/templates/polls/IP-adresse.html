@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>controllo</title>
+</head>
+<body>
+<h3>
+    {% if latest_ip_list %}
+        {% for ip in latest_ip_list %}
+        <li><p>{{ ip.IndirizzoIP_text }}</p></li>
+        {% endfor %}
+    {% endif %}
+</h3>
+</body>
+</html>

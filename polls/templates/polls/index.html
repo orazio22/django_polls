@@ -16,7 +16,11 @@ a {
     {% if latest_question_list %}
         <p>Spiegazione e balle varie<br>
             (tante cose noiose bla bla bla)....</p>
-        <h3><a href="/polls/6/">Vote first question</a></h3>
+        <form action="{% url 'polls:saveIP' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Vai alla prima domanda" style="height:50px; width:100px; color:teal">
+        </form>
+        <h3><a href="/polls/1/">Vote first question</a></h3>
         <ol>
         {% for question in latest_question_list %}
             <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>

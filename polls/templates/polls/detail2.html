@@ -12,20 +12,21 @@ h1 {
 </head>
 <body bgcolor=#CCCCCC leftmargin="50" topmargin="50">
 
-<h1> <font face="Arial"> {{ question.question_text }} </font> </h1>
+<h1> <font face="Arial"> Che voto daresti a questa immagine? </font> </h1>
+<img src="{{ question.question_image2 }}" width="200" height="300">
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'polls:vote' question.id %}" method="post">
+<form action="{% url 'polls:vote2' question.id %}" method="post">
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
-    {% if choice.choice_text == "A" or choice.choice_text == "B" %}
+    {% if choice.choice_text == "1 " or choice.choice_text == "2 " or choice.choice_text == "3 " or choice.choice_text == "4 " or choice.choice_text == "5 " %}
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} <img src="{{ choice.image }}" width="200" height="300"> </label><br />
+        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }} </label><br />
     {% endif %}
-    {% endfor %}
+{% endfor %}
 
-                                                                            <p>  <p>
+    <p>  <p>
     <input type="submit" value="Vote" style="height:50px; width:100px; color:teal" />
 </form>
 
